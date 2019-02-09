@@ -1,0 +1,12 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+main {
+    text-align: center
+}
+
+ul {
+    list-style: none
+}
