@@ -3,10 +3,46 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
-main {
+h1 {
+    text-align: center
+}
+
+h2 {
     text-align: center
 }
 
 ul {
+    text-align: center;
     list-style: none
 }
+
+.startButton {
+    display: flex; 
+    justify-content: center; 
+    display: block;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.retake-button {
+    display: block;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.nextQuestion {
+    display: block;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.questionAnswerForm {
+    display: none;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.hidden {
+    
+  }

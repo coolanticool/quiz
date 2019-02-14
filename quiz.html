@@ -7,27 +7,65 @@
     <meta name="description" content="Test your knowledge on the 1992 Lithuanian Basketball Team">
     <link href="quiz.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.css" rel="stylesheet">
-    
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="datastore.js"></script>
-    <script src="index.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">  
   </head>
+
   <body>
-    
-    <main role="main">
-      <div class="quizStart">
-        <h1>The 1992 Lithiuania Men's National Basketball Team </h1>
+
+      <main role="main">
+          
+          
+        
+          <section id='quizStart' class='quizStart'>
+            <div id="title">
+                <h1>The 1992 Lithiuania Men's National Basketball Team </h1>
+            </div>
+
         <h2>Let's test your knowledge on an iconic team in European basketball history</h2>
-        <div class="col-8">
-          <ul>
-            <li>Question: <span class="questionNumber">0</span>/10</li>
-            <li>Score: <span class="score">0</span></li>
-          </ul>
-        </div>
+      
+
+        
         <button type="button" class="startButton">Start</button>
       </div>
-      <div class="questionAnswerForm"></div>
-    </main>
+    </section>
+
+    <div class="col-8">
+        <ul>
+          <li>Question: <span class="questionNum">0</span>/10</li>
+          <li>Score: <span class="score">0</span></li>
+        </ul>
+      </div>
+
+      
+
+          <div class="questionAnswerForm"></div>
+
+         
+
+          <button type="button" class="nextQuestion">Next</button>
+          <div id='feedbackcorrect' class='all-feedback hidden'>
+          <h2>Right!</h2><br>
+          <div id='feedbackincorrect' class='hidden'><br></div>
+          <h2>Wrong!</h2>
+          <div class='results-counter'></div>
+          </section>
+        
+        <section id='final-page' class='hidden blackbox'>
+          <h1>Final Score</h1>
+          <div id='final-correct'><br></div>
+          
+         
+        </section>
+    
+        <button class="retake-button">Run it back!</button>
+       
+      
+    
+</main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="datastore.js"></script>
+    <script src="quiz.js"></script>
   </body>
 </html>
