@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <title>1992 Lithuanian Basketball Quiz App</title>
     <meta name="description" content="Test your knowledge on the 1992 Lithuanian Basketball Team">
-    <link href="quiz.css" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">  
@@ -26,7 +26,7 @@
       
 
         
-        <button type="button" class="startButton">Start</button>
+        <button type="button" class="startButton" id="startButton">Start</button>
       </div>
     </section>
 
@@ -41,24 +41,30 @@
 
           <div class="questionAnswerForm"></div>
 
-         
+          <section id='interaction'>
+          
+          <button type="submit" class="submitButton" id="submitButton">Submit</button>
 
-          <button type="button" class="nextQuestion">Next</button>
-          <div id='feedbackcorrect' class='all-feedback hidden'>
-          <h2>Right!</h2><br>
-          <div id='feedbackincorrect' class='hidden'><br></div>
-          <h2>Wrong!</h2>
+          <button type="button" class="nextQuestion" id="nextQuestion">Next</button>
+          <div id='feedbackcorrect' class='hidden'>
+          <h2>Right!</h2></div>
+
+          <div id='feedbackincorrect' class='hidden'><br>
+          <h2>Wrong!</h2></div>
           <div class='results-counter'></div>
-          </section>
-        
-        <section id='final-page' class='hidden blackbox'>
+          
+
+          <button type="button" button class="retake-button" id="retake-button">Run it back!</button>
+        </section>
+
+        <section id='final-page' class='hidden'>
           <h1>Final Score</h1>
           <div id='final-correct'><br></div>
           
          
-        </section>
+        
     
-        <button class="retake-button">Run it back!</button>
+        
        
       
     

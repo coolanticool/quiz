@@ -19,13 +19,19 @@ ul {
 .startButton {
     display: flex; 
     justify-content: center; 
-    display: block;
+   
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.submitButton {
+  display: flex; 
   margin-left: auto;
   margin-right: auto; 
 }
 
 .retake-button {
-    display: block;
+    display: flex;
   margin-left: auto;
   margin-right: auto; 
 }
@@ -43,6 +49,16 @@ ul {
     margin-right: auto; 
 }
 
+input:checked {
+  border: 8px solid #ebca52;
+}
+
+input[type=radio] {
+  flex: 0 0 auto;
+  margin-right: 10px;
+}
+
+
 .hidden {
-    
+    display:none;
   }
