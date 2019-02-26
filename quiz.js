@@ -1,48 +1,12 @@
-var questionNum = 0;
-var score = 0;
-
-function generateQuestion () {
-
-
-    if (questionNum < questionArray.length) {
-      return `<div class="question-${questionNum}">
-      <h2>${questionArray[questionNum].question}</h2>
-      <form>
-      <fieldset>
-      <label class="answerOption">
-      <input type="radio" value="${questionArray[questionNum].answers[0]}" name="answer" required>
-      <span>${questionArray[questionNum].answers[0]}</span>
-      </label>
-      <label class="answerOption">
-      <input type="radio" value="${questionArray[questionNum].answers[1]}" name="answer" required>
-      <span>${questionArray[questionNum].answers[1]}</span>
-      </label>
-      <label class="answerOption">
-      <input type="radio" value="${questionArray[questionNum].answers[2]}" name="answer" required>
-      <span>${questionArray[questionNum].answers[2]}</span>
-      </label>
-      
-      </fieldset>
-      </form>
-      </div>`;
-  } else {
-      restartQuiz();
-      $('.questionNum').text(10)
-    }
-  }
-
-  function generateQuestionNew (lclQuestionIndex) {
+function generateQuestionNew (lclQuestionIndex) {
 
     var lclQuestionIndex
-    
-    
-    
-    
+  
         if (questionNum < questionArray.length) {
           return `<div class="question-${questionNum}">
           <h2>${questionArray[lclQuestionIndex].question}</h2>
           <form>
-          <fieldset>
+          <fieldset style='border-radius: 10px;'>
           <label class="answerOption">
           <input type="radio" value="${questionArray[questionNum].answers[0]}" name="answer" required>
           <span>${questionArray[lclQuestionIndex].answers[0]}</span>
@@ -55,15 +19,14 @@ function generateQuestion () {
           <input type="radio" value="${questionArray[questionNum].answers[2]}" name="answer" required>
           <span>${questionArray[lclQuestionIndex].answers[2]}</span>
           </label></br />
-          <div style="text-align: center;">
-          
-          </div>
           </fieldset>
           </form>
           </div>`;
       } else {
+        showFinalScore();
           restartQuiz();
-          $('.questionNum').text(10)
+
+
         }
       }
     
@@ -73,11 +36,14 @@ function startQuiz () {
     //create event listener on startButton
 
 questionNum = 0;
-score = 0;
 
-        $('.quizStart').on('click', '.startButton', function (event) {
-          //$('.quizStart').remove();
+
+        $('.quizStart').on('click', '#startButton', function (event) {
+          $('.quizStart').addClass('hidden');
           $('.questionAnswerForm').css('display', 'block');
+          $('#questionBlock').show();
+          $('#submitButton').show();
+          $('#retake-button').hide();
           
       });
 
@@ -85,12 +51,13 @@ score = 0;
 
 function submitQuizAnswer() {
   // submit selected answer, disable radio buttons
-  $('#submit-answer').click(function(event) {
+  
+  $('#submitButton').click(function(event) {
     event.preventDefault();
     evaluateAnswers();
-    $('#submit-answer').addClass('hidden');
-    $('#next-question').removeClass('hidden');
-    $('input[type=radio]').attr('disabled', true);
+    $('#submitButton').hide();
+    $('#nextQuestion').show();
+    $('input[type=radio]').attr('disabled', true); 
   });
 }
 
@@ -99,69 +66,59 @@ function evaluateAnswers() {
   //check for correct answer and display results and/or correct answer, also display updated score
   let radioValue = $('input:checked').val();
   if (radioValue == questionArray[questionNum].correct) {
-    
     userScore.correct++;
     $('#feedbackcorrect').removeClass('hidden');
+    $('#nextQuestion').show();
+    $('#feedbackincorrect').addClass('hidden');
   } else {
     userScore.incorrect++;
-    getCorrectAnswer();
     $('#feedbackincorrect').removeClass('hidden');
-    $('.sad-coffee').removeClass('hidden');
+    $('#feedbackcorrect').addClass('hidden');
+    $("#correctDisplay").html(questionArray[questionNum].correct)
+    $('#nextQuestion').show();
   }
-  $('.results-counter').html(`<p>Correct: ${userScore.correct} | Incorrect: ${userScore.incorrect}</p>`);
+  $('.results').html(`<p>Correct: ${userScore.correct} | Incorrect: ${userScore.incorrect} | Question Total: ${userScore.correct + userScore.incorrect} </p>`);
 }  
 
 
-let userScore = {
+var userScore = {
   correct: 0,
   incorrect: 0,
+  totalQuestion:0,
 };
 
 
-/*// Checks answer from the array to see if the one chosen is the one that is correct
-function checkAnswer(answer){
-  var listQuestion = questionArray[current];
-  if(listQuestion.correct == answer){
-    score++;
-    
-  } else {
-    $('li.selected').remove('hidden');
-    $('listQuestion.correct').remove('hidden');
-  }
-  $('.score').text('Current Score: '+score);
-  current++;
-}*/
-
 function renderQuestion () {
-    //render question in DOM
-        $('.questionAnswerForm').html(generateQuestionNew(questionNum));
-      }
-
+  //render question in DOM
+  $('.questionAnswerForm').html(generateQuestionNew(questionNum));
+}
 
 function changeQuestion () {
     //increment question
-    //if (questionNum < questionArray.length) {
-        questionNum ++; 
-    //} 
-        //$('.questionNum').text(questionNum+1);
+  $('.questionNum').text(questionNum+1);
 }
 
 function renderNextQuestion () {
-    
-    $('questionAnswerForm').on('click', '.nextQuestion', function (event) {
-       alert ("test"); 
+    //render next question in DOM, hide feeback
+    $('.questionAnswerForm').on('click', '#nextQuestion', function (event) {
       changeQuestion();
       renderQuestion();
-      userSelectAnswer();
-        }
-    )};
+      $('#feedbackincorrect').addClass('hidden');
+      $('#feedbackcorrect').addClass('hidden');
+  }
+)};
 
-  
-
-function displayScore () {
-    //increment score
-        score ++;
+function showFinalScore() {
+    // hide submit button and display final page with final score
+          $('#submitButton').hide();
+          $('#questionBlock').hide();
+          $('#final-page').show();
+          $('#retake-button').show();
+          $('#results-counter').hide();
+          let finalScoreText = `<h3>You answered ${userScore.correct} out of 10 questions correctly!</h3>`;
+          $('#final-correct').append(finalScoreText);
 }
+
 
 
 function restartQuiz () {
@@ -175,60 +132,48 @@ $(".retake-button").click(function(){
   //run quiz functions
 function makeQuiz () {
     startQuiz();
+    submitQuizAnswer();
     renderQuestion();
     changeQuestion();
     renderNextQuestion();
-    displayScore();
     restartQuiz();
-  }
+}
 
   // main function handler
 
   $(document).ready(function(){
-  
-    /*$("p").click(function(){
-      $(this).hide();
-    });*/
+
+  $("title").html(pageTitle);
+  $(".header").html(pageHeader);
+  $(".subHeader").html(pageSubHeader);
+  $("body").css('background-image', backgroundImage);
   
   
      $("#startButton").click(function(){
       makeQuiz();
     });
 
-  
-
-      $('#submit-answer').click(function(event) {
-        event.preventDefault();
-        evaluateAnswers();
-        $('#submit-answer').addClass('hidden');
-        $('#next-question').removeClass('hidden');
-        $('input[type=radio]').attr('disabled', true);
-      });
-    
-      
-        
-       $("#nextQuestion").click(function(){
-      //alert(questionNum)
-      questionNum++;
-       
-
-  
-  $('.questionAnswerForm').html(generateQuestionNew(questionNum));
+    $('#submitButton').click(function(event) {
+      event.preventDefault();
+      $('#submitButton').hide();
+      $('#nextQuestion').show();
+      $('input[type=radio]').attr('disabled', true); 
     });
-
+  
+       $("#nextQuestion").click(function(){
+      questionNum++;
+      $('#submitButton').show();
+      $('#submitButton').removeAttr('disabled', true); 
+      $('#nextQuestion').hide();
+      $('#feedbackincorrect').addClass('hidden');
+      $('#feedbackcorrect').addClass('hidden');
+      $('.questionAnswerForm').html(generateQuestionNew(questionNum));
+      
+    });
+  
   
   $(".retake-button").click(function(){
-    //alert ('restarted quiz');
       location.reload();
   });
 
-  
-    /*$('form').on('submit', function (event) {
-      event.preventDefault();
-      let selected = $('input:checked');
-      let answer = selected.val();
-      let correctAnswer = `${questionArray[lclQuestionIndex].correct}`;
-  
-});*/
-
-  })
+})

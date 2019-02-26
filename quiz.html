@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>1992 Lithuanian Basketball Quiz App</title>
-    <meta name="description" content="Test your knowledge on the 1992 Lithuanian Basketball Team">
+    <title></title>
+    <meta name="description" content="Quiz app with content based on generated title">
     <link href="style.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.css" rel="stylesheet">
 
@@ -13,60 +13,44 @@
 
   <body>
 
-      <main role="main">
-          
-          
-        
+      <main>
           <section id='quizStart' class='quizStart'>
-            <div id="title">
-                <h1>The 1992 Lithiuania Men's National Basketball Team </h1>
+            
+                <h1 class='header'></h1>
             </div>
 
-        <h2>Let's test your knowledge on an iconic team in European basketball history</h2>
+        <h2 class='subHeader'></h2>
       
-
-        
-        <button type="button" class="startButton" id="startButton">Start</button>
-      </div>
+        <button type="button"  id="startButton">Start</button>
     </section>
 
-    <div class="col-8">
-        <ul>
-          <li>Question: <span class="questionNum">0</span>/10</li>
-          <li>Score: <span class="score">0</span></li>
-        </ul>
-      </div>
-
-      
-
-          <div class="questionAnswerForm"></div>
-
-          <section id='interaction'>
+            <section id='questionBlock' class='hidden'>
           
-          <button type="submit" class="submitButton" id="submitButton">Submit</button>
+              <div class="questionAnswerForm" id="questionPage"></div>
+       
+          <button type="button"  id="submitButton" style="display: none;">Submit</button>
 
-          <button type="button" class="nextQuestion" id="nextQuestion">Next</button>
+          <button type="button"  class="nextQuestion" 
+          id="nextQuestion" style="display: none;">Next</button>
+
+          <div class='results' id='results-counter1'></div>
+
           <div id='feedbackcorrect' class='hidden'>
           <h2>Right!</h2></div>
 
           <div id='feedbackincorrect' class='hidden'><br>
-          <h2>Wrong!</h2></div>
-          <div class='results-counter'></div>
-          
+            <h2 style="padding-bottom: 8px; margin-bottom: 0px;">Sorry!</h2>
+            <div style="padding-bottom: 8px; text-align: center;">The correct answer is '<span id="correctDisplay">Moo</span>'.</div>
+            </div>
+          </section>
 
-          <button type="button" button class="retake-button" id="retake-button">Run it back!</button>
-        </section>
+          <section id='final-page' style="display:none; text-align: center; margin: 16px;">
 
-        <section id='final-page' class='hidden'>
-          <h1>Final Score</h1>
-          <div id='final-correct'><br></div>
-          
-         
-        
-    
-        
-       
-      
+          <div class='results' id='results-counter2'></div>
+              <h1>Final Score</h1>
+            <div id='final-correct'><br></div>
+          <button type="button" class="retake-button" id="retake-button" style="display: none;">Play Again!</button>
+         </section>
     
 </main>
 

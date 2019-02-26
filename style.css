@@ -3,62 +3,253 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
-h1 {
-    text-align: center
+body {
+  background-image: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
+
+.quizStart {
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  text-align:center;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin: 15px;
+  color: rgba(28, 28, 28, 0.9);
+}
+
+#questionBlock {
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin: 15px;
+  color: rgba(28, 28, 28, 0.9);
+}
+
+
+
 
 h2 {
-    text-align: center
-}
-
-ul {
     text-align: center;
-    list-style: none
+    padding: 15px;
+    color: rgba(28, 28, 28, 0.9);
 }
 
-.startButton {
+
+#startButton {
     display: flex; 
-    justify-content: center; 
-   
+    border-radius: 10px;
+    margin: 16px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#startButton:hover {
+  background-color: rgba(0, 107, 66, 0.5) ;
+  transition: 0.2s all linear;
+}
+
+#submitButton {
+  display: flex;
+  border-radius: 10px;
+  margin: 16px;
   margin-left: auto;
   margin-right: auto; 
 }
 
-.submitButton {
-  display: flex; 
-  margin-left: auto;
-  margin-right: auto; 
+#submitButton:hover {
+  background-color: rgba(0, 107, 66, 0.5) ;
+  transition: 0.2s all linear;
 }
 
 .retake-button {
     display: flex;
+    border-radius: 10px;
+    margin: 16px;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.retake-button:hover {
+  background-color: rgba(0, 107, 66, 0.5) ;
+  transition: 0.2s all linear;
+}
+
+#results-counter1 {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+#results-counter2 {
+  display: flex;
   margin-left: auto;
   margin-right: auto; 
 }
 
 .nextQuestion {
-    display: block;
-  margin-left: auto;
-  margin-right: auto; 
+    display: flex;
+    border-radius: 10px;
+    margin: 16px;
+    margin-left: auto;
+    margin-right: auto; 
+  
+}
+
+.nextQuestion:hover {
+  background-color: rgba(0, 107, 66, 0.5) ;
+  transition: 0.2s all linear;
 }
 
 .questionAnswerForm {
     display: none;
-    width: 50%;
+    width: 60%;
     margin-left: auto;
     margin-right: auto; 
 }
 
-input:checked {
-  border: 8px solid #ebca52;
+input{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgb(148, 148, 148);
+    transition: 0.2s all linear;
+    outline: none;
+    position: relative;
+    top: 2px;
 }
 
-input[type=radio] {
-  flex: 0 0 auto;
-  margin-right: 10px;
+input:checked {
+  background-color: rgba(253, 185, 13, 0.85);
+}
+
+input:hover {
+background-color: rgba(194, 34, 39, 0.85);
+}
+
+
+p {
+  display: flex;
+  margin-left: auto;
+    margin-right: auto; 
+}
+
+#final-page {
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin: 15px;
+  color: rgba(28, 28, 28, 0.9);
 }
 
 
 .hidden {
-    display:none;
+  display:none;
   }
+
+  @media screen and (max-width:1024px) {
+
+
+    body {
+      background-position: center center;
+    }
+    
+    .questionAnswerForm {
+      text-align: left;
+      width: 80%;
+    }
+    
+    #startButton {
+      background-color: rgba(0, 107, 66, 0.5) ;
+    }
+    
+    input:checked {
+      background-color: rgba(253, 185, 13, 0.85);
+    }
+    
+    
+    #submitButton {
+      background-color: rgba(0, 107, 66, 0.5);
+    }
+    
+    .nextQuestion {
+      background-color: rgba(0, 107, 66, 0.5);
+    }
+    
+    .retake-button {
+      background-color: rgba(0, 107, 66, 0.5) ;
+    }
+    
+    }
+
+@media screen and (max-width:720px) {
+
+   
+body {
+  background-position: center center;
+}
+
+.questionAnswerForm {
+  text-align: left;
+  
+}
+
+#startButton {
+  background-color: rgba(0, 107, 66, 0.5) ;
+}
+
+input:checked {
+  background-color: rgba(253, 185, 13, 0.85);
+}
+
+
+#submitButton {
+  background-color: rgba(0, 107, 66, 0.5);
+}
+
+.nextQuestion {
+  background-color: rgba(0, 107, 66, 0.5);
+}
+
+.retake-button {
+  background-color: rgba(0, 107, 66, 0.5) ;
+}
+    
+}
+
+@media screen and (max-width:480px) {
+
+
+body {
+  background-position: center center;
+}
+
+.questionAnswerForm {
+  text-align: left;
+  width: 80%;
+}
+
+#startButton {
+  background-color: rgba(0, 107, 66, 0.5) ;
+}
+
+input:checked {
+  background-color: rgba(253, 185, 13, 0.85);
+}
+
+
+#submitButton {
+  background-color: rgba(0, 107, 66, 0.5);
+}
+
+.nextQuestion {
+  background-color: rgba(0, 107, 66, 0.5);
+}
+
+.retake-button {
+  background-color: rgba(0, 107, 66, 0.5) ;
+}
+
+}
